@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
@@ -9,7 +10,9 @@ function Header() {
         textAlign: "center",
       }}
     >
-      <h1>This is a header</h1>
+      <Link to="/">
+        <h1>Notes</h1>
+      </Link>
     </div>
   );
 }
