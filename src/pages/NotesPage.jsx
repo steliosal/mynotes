@@ -1,14 +1,6 @@
 import React,{useEffect, useState} from "react";
 import ListItem from "../components/ListItem";
-// import notes from "../assets/Data";
-
-
-// theleis na kaneis fetch ta notes apo to db me api call
-// se mia useeffect function
-// ftiakseis mia async await promise 
-// na kaneis fetch ta data
-// ta opoia tha kaneis JSON
-// k meta assign sto setnotes function
+import AddButton from "../components/AddButton";
 
 
 
@@ -37,6 +29,7 @@ const getNotes = async () => {
           return <ListItem note={note} key={id} />;
         })}
       </h1>
+      <AddButton/>
     </div>
   );
 }
