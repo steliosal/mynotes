@@ -1,14 +1,54 @@
-import React from "react";
-import notes from "../assets/Data";
+import React,{useEffect, useState} from "react";
+
+// theleis na kaneis fetch to kathe notee apo to db me to id tou
+// se mia useeffect function
+// ftiakseis mia async await promise 
+// na kaneis fetch ta data
+// ta opoia tha kaneis JSON
+// k meta assign sto setnotes function
+
+
 function SingleNotePage({ match }) {
+
   let noteId = match.params.id;
-  // eslint-disable-next-line
-  let SingleNote = notes.find((note) => note.id == noteId);
+  
+  const [note, setNote] = useState(null);
+
+  useEffect( () => {
+  
+    getNote()
+    
+  },[noteId])
+
+let getNote = async () => {
+  let response = await fetch(`http://localhost:5000/notes/${noteId}`)
+  let data = await response.json()
+setNote(data)
+} 
+
+ const updateNote = async () => {
+  await fetch(`http://localhost:5000/notes/${noteId}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({...note, "updated": new Date()})
+  })
+
+
+ }
+
+
+
   return (
     <div>
-      <textarea value={SingleNote?.body}></textarea>
+      <textarea onChange={(e) => setNote({...note, "body": e.target.value})} value={note?.body}></textarea>
     </div>
   );
+
 }
 
+
 export default SingleNotePage;
+
+
