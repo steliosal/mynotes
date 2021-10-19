@@ -25,11 +25,11 @@ const getNotes = async () => {
         <p>{notes.length}</p>
       </div>
       <h1>
-        {notes.map((note, id) => {
-          return <ListItem note={note} key={id} />;
+        {notes.map((note, index) => {
+          return <ListItem note={note} key={index} />;
         })}
       </h1>
-      <AddButton/>
+      <AddButton />
     </div>
   );
 }
