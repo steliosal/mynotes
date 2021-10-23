@@ -19,12 +19,12 @@ const getNotes = async () => {
 }
 
   return (
-    <div>
-      <div>
-        <h1>&#9782;Notes</h1>
-        <p>{notes.length}</p>
+    <div className="notes">
+      <div className="notes-header">
+        <h1 className="notes-title">&#9782;Notes</h1>
+        <p className="notes-count">{notes.length}</p>
       </div>
-      <h1>
+      <h1 className="notes-list">
         {notes.map((note, index) => {
           return <ListItem note={note} key={index} />;
         })}
