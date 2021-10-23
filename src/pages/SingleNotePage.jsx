@@ -14,62 +14,69 @@ function SingleNotePage({ match, history }) {
   },[noteId])
 
 let getNote = async () => {
-  let response = await fetch(`http://localhost:5000/notes/${noteId}`)
-  let data = await response.json()
-setNote(data)
-} 
+  if (noteId === "new") return;
 
- const updateNote = async () => {
-  await fetch(`http://localhost:5000/notes/${noteId}`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({...note, "updated": new Date()})
-  })
- }
-
-let deleteNote = async () => {
-  await fetch(`http://localhost:5000/notes/${noteId}`, {
-    method: "DELETE",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({note})
-  })
-  history.push("/")
-}
+  let response = await fetch(`http://localhost:5000/notes/${noteId}`);
+  let data = await response.json();
+  setNote(data);
+};
 
 const createNote = async () => {
   await fetch(`http://localhost:5000/notes/`, {
     method: "POST",
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify({...note, "updated": new Date()})
-  })
- }
+    body: JSON.stringify({ ...note, updated: new Date() }),
+  });
+};
 
- let handleSubmit = () => {
+const updateNote = async () => {
+  await fetch(`http://localhost:5000/notes/${noteId}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ ...note, updated: new Date() }),
+  });
+};
+
+let deleteNote = async () => {
+  await fetch(`http://localhost:5000/notes/${noteId}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ note }),
+  });
+  history.push("/");
+};
+
+let handleSubmit = () => {
   if (noteId !== "new" && !note.body) {
-      deleteNote()
-  } else if (noteId !== "new")  {
-      updateNote()   
-  } else if (noteId === "new") {
-     createNote()
+    deleteNote();
+  } else if (noteId !== "new") {
+    updateNote();
+  } else if (noteId === "new" && note !== null) {
+    createNote();
   }
-   history.push("/")
- }
+  history.push("/");
+};
 
-
-
-  return (
-    <div>
-      <button onClick = {handleSubmit}>Home</button>
-      <textarea onChange={(e) => setNote({...note, "body": e.target.value})} value={note?.body}></textarea>
-      <button onClick ={deleteNote}>Delete</button>
-   </div>
-  );
+return (
+  <div>
+    <button onClick={handleSubmit}>Home</button>
+    <textarea
+      onChange={(e) => setNote({ ...note, body: e.target.value })}
+      value={note?.body}
+    ></textarea>
+    {noteId !== "new" ? (
+      <button onClick={deleteNote}>Delete</button>
+    ) : (
+      <button onClick={handleSubmit}>Done</button>
+    )}
+  </div>
+);
 
 }
 
