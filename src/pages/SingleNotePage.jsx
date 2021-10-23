@@ -1,12 +1,5 @@
 import React,{useEffect, useState} from "react";
 
-// theleis na kaneis fetch to kathe notee apo to db me to id tou
-// se mia useeffect function
-// ftiakseis mia async await promise 
-// na kaneis fetch ta data
-// ta opoia tha kaneis JSON
-// k meta assign sto setnotes function
-
 
 function SingleNotePage({ match, history }) {
 
@@ -47,12 +40,23 @@ let deleteNote = async () => {
   history.push("/")
 }
 
+const createNote = async () => {
+  await fetch(`http://localhost:5000/notes/`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({...note, "updated": new Date()})
+  })
+ }
 
  let handleSubmit = () => {
   if (noteId !== "new" && !note.body) {
       deleteNote()
   } else if (noteId !== "new")  {
-updateNote()   
+      updateNote()   
+  } else if (noteId === "new") {
+     createNote()
   }
    history.push("/")
  }
