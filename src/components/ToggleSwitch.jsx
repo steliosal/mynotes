@@ -1,13 +1,13 @@
-import React from "react";
-import "./ToggleSwitch.css";
+// import React from "react";
+// import "../App.css";
 
-const ToggleSwitch = () => {
-  return (
-    <div className="toggle-container">
-      <input type="checkbox" id="switch" />
-      <label for="switch">Toggle</label>
-    </div>
-  );
-};
+// const ToggleSwitch = (props) => {
+//   return (
+//     <div className="app-toggle">
+//       <input type="checkbox" id="switch" />
+//       <label for="switch">Toggle</label>
+//     </div>
+//   );
+// };
 
-export default ToggleSwitch;
+// export default ToggleSwitch;
