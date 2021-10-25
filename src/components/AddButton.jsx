@@ -4,10 +4,10 @@ import {ReactComponent as AddIcon} from '../assets/plusIcon.svg'
 
 const AddButton = () => {
     return (
-        <Link to = "/note/new">
-            <AddIcon />
-        </Link>
-    )
+      <Link to="/note/new" className="floating-button">
+        <AddIcon className="plusIcon" />
+      </Link>
+    );
 }
 
 export default AddButton

@@ -64,17 +64,19 @@ let handleSubmit = () => {
 };
 
 return (
-  <div>
-    <button onClick={handleSubmit}>Home</button>
+  <div className="note">
+    <div className="note-header">
+      <button onClick={handleSubmit}>Home</button>
+      {noteId !== "new" ? (
+        <button onClick={deleteNote}>Delete</button>
+      ) : (
+        <button onClick={handleSubmit}>Done</button>
+      )}
+    </div>
     <textarea
       onChange={(e) => setNote({ ...note, body: e.target.value })}
       value={note?.body}
     ></textarea>
-    {noteId !== "new" ? (
-      <button onClick={deleteNote}>Delete</button>
-    ) : (
-      <button onClick={handleSubmit}>Done</button>
-    )}
   </div>
 );
 

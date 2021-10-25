@@ -5,7 +5,7 @@ const ListItem = ({ note }) => {
   return (
     <div className="notes-list-item">
       <Link to={`/note/${note.id}`}>
-        <li>{note.body}</li>
+        <h3>{note.body}</h3>
       </Link>
     </div>
   );
