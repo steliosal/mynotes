@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&display=swap');
+
 *{
     margin: 0;
     padding: 0;
@@ -19,16 +21,20 @@ a{
 }
 
 .light-mode {
-    --color-headText: #f5f6f7;
+  --color-headText: #252629;
   --color-main: #f68657;
   --color-text: #383a3f;
   --color-dark: #1f2124;
   --color-gray: #677;
-  --color-bg: #979797;
+  --color-bg: #C9CCD5;
   --color-light: #555555;
-  --color-lighter: #555555;
-  --color-white: #eeeeee;
+  --color-lighter: #93B5C6;
+  --color-white: #FFE3E3;
   --color-border:#e0e3e6;
+  --notes-count:#FFE3E3;
+  --addButton:#00689c;
+  --notesHeader: #00689c;
+  --hoverNotes: #93B5C6;
   transition: all 6s ease-in;
 }
 
@@ -42,6 +48,10 @@ a{
     --color-lighter: #292a2c;
     --color-white: #2e3235;
     --color-border:#252629;
+    --notes-count:#f68657;
+    --addButton: #f68657;
+    --notesHeader: #2e3235;
+    --hoverNotes: rgb(218, 218, 218);
 
    
     
@@ -108,6 +118,7 @@ height: 100vh;
 color: var(--color-text);
 background-color: var(--color-bg);
 align-items: center;
+display: flex;
 }
 
 
@@ -119,7 +130,6 @@ margin: 0 auto;
 background-color: var(--color-white);
 box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.05);
 position: relative;
-bottom: -50px;
 border-radius: 22px;
 }
 
@@ -142,7 +152,7 @@ border-radius: 22px;
 }
 
 .app-label h1{
-    color: var(---color-headText);
+    color: var(--color-headText);
     position: absolute;
     right: 370px;
     top: 55px;
@@ -168,19 +178,22 @@ align-items: center;
 justify-content: space-between;
 padding: 10px 16px;
 border-bottom: 2px solid #444649;
+background-color: var(--notesHeader);
 }
 
 .notes-title,
 .notes-count {
     font-size: 24px;
     font-weight: 600;
-    color: var(--color-main);
+    color: var(--notes-count);
 }
 
 .notes-list{
+    display: block;
     padding: 10;
     margin:  0;
-    height: 70vh;
+    height: auto;
+    max-height: 63vh;
     overflow-y: auto;
     scrollbar-width: none; /* Firefox */
 }
@@ -196,7 +209,7 @@ border-bottom: 2px solid #444649;
   }
 
   .notes-list-item:hover {
-      background-color: white;
+      background-color: var(--hoverNotes);
       color: #1f2124;
       cursor: pointer;
   }
@@ -214,7 +227,7 @@ border-bottom: 2px solid #444649;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    background: var(--color-main);
+    background: var(--addButton);
     /* box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2); */
   }
 
@@ -227,7 +240,7 @@ border-bottom: 2px solid #444649;
   }
 
   .floating-button:hover {
-    background-color: rgb(134, 72, 0);
+    background-color: rgb(216, 118, 5);
     color: #ffffff;
     cursor: pointer;
   }

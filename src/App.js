@@ -8,7 +8,7 @@ import './App.css';
 
 function App() {
 
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
   return (
     <Router>
       <div className = { darkMode ? "dark-mode" : "light-mode"}>
