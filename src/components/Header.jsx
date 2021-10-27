@@ -1,11 +1,12 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
     <div className="app-label">
-      <h1>Notes List</h1>
-      
+      <Link to={"/"}>
+        <h1>My Notebook</h1>
+      </Link>
     </div>
   );
 }

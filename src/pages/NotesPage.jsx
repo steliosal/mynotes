@@ -24,11 +24,11 @@ const getNotes = async () => {
         <h1 className="notes-title">&#9782;Notes</h1>
         <p className="notes-count">{notes.length}</p>
       </div>
-      <h2 className="notes-list">
+      <div className="notes-list">
         {notes.map((note, index) => {
           return <ListItem note={note} key={index} />;
         })}
-      </h2>
+      </div>
       <AddButton />
     </div>
   );
